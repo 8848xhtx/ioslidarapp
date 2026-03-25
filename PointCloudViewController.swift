@@ -1,6 +1,7 @@
 import UIKit
 import ARKit
 import SceneKit
+import simd
 
 class PointCloudViewController: UIViewController, ARSessionDelegate {
     private let sceneView = ARSCNView()
