@@ -1,6 +1,7 @@
 import UIKit
+#if canImport(RoomPlan)
 import RoomPlan
-
+@available(iOS 16.0, *)
 class RoomScanViewController: UIViewController, RoomCaptureViewDelegate {
     private var captureView: RoomCaptureView!
     private let captureSession = RoomCaptureSession()
@@ -95,3 +96,18 @@ class RoomScanViewController: UIViewController, RoomCaptureViewDelegate {
         exportButton.isHidden = false
     }
 }
+#else
+class RoomScanViewController: UIViewController {
+    private var infoLabel: UILabel = UILabel()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .black
+        infoLabel.text = "RoomPlan不可用"
+        infoLabel.textColor = .white
+        infoLabel.textAlignment = .center
+        infoLabel.frame = view.bounds
+        infoLabel.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(infoLabel)
+    }
+}
+#endif
