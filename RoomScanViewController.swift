@@ -1,5 +1,5 @@
 import UIKit
-#if canImport(RoomPlan)
+#if canImport(RoomPlan) && !ROOMPLAN_DISABLED
 import RoomPlan
 @available(iOS 16.0, *)
 class RoomScanViewController: UIViewController, RoomCaptureViewDelegate {
