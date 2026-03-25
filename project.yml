@@ -1,0 +1,21 @@
+name: LiDARScan
+options:
+  bundleIdPrefix: com.example
+  developmentRegion: en
+targets:
+  LiDARScanApp:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: .
+        excludes:
+          - .github
+          - project.yml
+    info:
+      path: Info.plist
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.example.lidarscan
+      PRODUCT_NAME: LiDARScan
+      SWIFT_VERSION: 5.9
+      IPHONEOS_DEPLOYMENT_TARGET: 16.0
