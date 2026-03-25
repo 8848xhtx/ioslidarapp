@@ -14,8 +14,9 @@ jobs:
       
       - name: Select Xcode
         uses: maxim-lobanov/setup-xcode@v1
+        continue-on-error: true
         with:
-          xcode-version: "15.4"
+          xcode-version: "16.4"
 
       - name: Show Xcode Version
         run: |
