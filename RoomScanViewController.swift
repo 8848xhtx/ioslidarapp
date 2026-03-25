@@ -4,7 +4,6 @@ import RoomPlan
 @available(iOS 16.0, *)
 class RoomScanViewController: UIViewController, RoomCaptureViewDelegate {
     private var captureView: RoomCaptureView!
-    private let captureSession = RoomCaptureSession()
     private let roomBuilder = RoomBuilder(options: [.beautifyObjects])
     private var finalResult: CapturedRoom?
     private var startButton: UIButton = UIButton(type: .system)
@@ -26,7 +25,6 @@ class RoomScanViewController: UIViewController, RoomCaptureViewDelegate {
         }
         captureView = RoomCaptureView(frame: view.bounds)
         captureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        captureView.session = captureSession
         captureView.delegate = self
         view.addSubview(captureView)
 
@@ -59,11 +57,11 @@ class RoomScanViewController: UIViewController, RoomCaptureViewDelegate {
         finalResult = nil
         exportButton.isHidden = true
         let config = RoomCaptureSession.Configuration()
-        captureSession.run(configuration: config)
+        captureView.captureSession.run(configuration: config)
     }
 
     @objc private func stopScan() {
-        captureSession.stop()
+        captureView.captureSession.stop()
     }
 
     @objc private func exportResult() {
