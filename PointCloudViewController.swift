@@ -313,7 +313,7 @@ class PointCloudViewController: UIViewController, ARSessionDelegate {
         let element = SCNGeometryElement(indices: indices, primitiveType: .point)
         var sources: [SCNGeometrySource] = [vertexSource]
         if colors.count == points.count * 4 {
-            let colorData = colors.withUnsafeBytes { Data($0) }
+            let colorData = colors.withUnsafeBufferPointer { Data(buffer: $0) }
             let colorSource = SCNGeometrySource(data: colorData, semantic: .color, vectorCount: points.count, usesFloatComponents: true, componentsPerVector: 4, bytesPerComponent: MemoryLayout<Float>.size, dataOffset: 0, dataStride: MemoryLayout<Float>.size * 4)
             sources.append(colorSource)
         }
