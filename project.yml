@@ -15,7 +15,12 @@ targets:
     info:
       path: Info.plist
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: com.example.lidarscan
-      PRODUCT_NAME: LiDARScan
-      SWIFT_VERSION: 5.9
-      IPHONEOS_DEPLOYMENT_TARGET: 16.0
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.lidarscan
+        PRODUCT_NAME: LiDARScan
+        IPHONEOS_DEPLOYMENT_TARGET: 16.0
+        CLANG_ENABLE_MODULES: YES
+      debug:
+        SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+      release:
+        SWIFT_OPTIMIZATION_LEVEL: "-O"
